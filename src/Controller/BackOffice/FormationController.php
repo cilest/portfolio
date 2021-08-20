@@ -48,6 +48,8 @@ class FormationController extends AbstractController
             $this->getDoctrine()->getManager()->persist($formation);
             $this->getDoctrine()->getManager()->flush();
 
+            $this->addFlash('success', 'La formation a été créée.');
+
             return $this->redirectToRoute('backoffice_formations_manage');
         }
 
@@ -69,6 +71,8 @@ class FormationController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
             $this->getDoctrine()->getManager()->flush();
+
+            $this->addFlash('success', 'La formation a été mise à jour.');
 
             return $this->redirectToRoute('backoffice_formations_update', [
                 'id' => $formation->getId()
@@ -107,6 +111,8 @@ class FormationController extends AbstractController
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->remove($formation);
             $entityManager->flush();
+
+            $this->addFlash('success', 'La formation a été supprimée.');
         }
 
         return $this->redirectToRoute('backoffice_formations_manage');
