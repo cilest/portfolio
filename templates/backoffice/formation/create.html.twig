@@ -5,8 +5,19 @@
 {% block body %}
 
     <div class="container-xl">
-        <h1>Créer une nouvelle formation:</h1>
-        {% include "backoffice/formation/_form.html.twig" %}
+        <div class="card">
+            <div class="card-header">
+                <div class="d-flex justify-content-between">
+                    <h5>Créer une formation</h5>
+                    <div class="d-flex justify-content-end">
+                        <a href="{{ path("backoffice_formations_manage") }}" class="btn btn-sm btn-outline-primary">Retour</a>
+                    </div>
+                </div>
+            </div>
+            <div class="card-body">
+                {% include "backoffice/formation/_form.html.twig" %}
+            </div>
+        </div>
     </div>
 
 {% endblock %}
