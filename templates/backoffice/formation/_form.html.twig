@@ -1,0 +1,30 @@
+{{ form_start(form) }}
+<div class="my-custom-class-for-errors">
+    {{ form_errors(form) }}
+</div>
+
+
+<div class="mb-3">
+    {{ form_row(form.title) }}
+</div>
+
+<div class="mb-3">
+    {{ form_row(form.description) }}
+</div>
+
+<div class="mb-3 row">
+    <div class="col">
+        {{ form_row(form.startedAt) }}
+    </div>
+    <div class="col">
+        {{ form_row(form.endedAt) }}
+    </div>
+</div>
+
+{{ form_row(form.save) }}
+{#    {{ form_widget(form) }}#}
+
+
+
+
+{{ form_end(form) }}
