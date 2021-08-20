@@ -21,7 +21,12 @@ Encore
      * and one CSS file (e.g. app.scss) if your JavaScript imports CSS.
      */
     .addEntry('app', './assets/app.js')
-    .addEntry('backoffice', './assets/backoffice.js')
+    .addEntry('backoffice', [
+        './assets/backoffice.js',
+        './node_modules/jquery/dist/jquery.slim.js',
+        './node_modules/@popperjs/core/dist/umd/popper.min.js',
+        './node_modules/bootstrap/dist/js/bootstrap.js'
+    ])
 
     // enables the Symfony UX Stimulus bridge (used in assets/bootstrap.js)
     .enableStimulusBridge('./assets/controllers.json')

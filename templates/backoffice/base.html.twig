@@ -8,12 +8,12 @@
         {% block stylesheets %}
             {{ encore_entry_link_tags('backoffice') }}
         {% endblock %}
+    </head>
+    <body class="bg-light">
+        {% block body %}{% endblock %}
 
         {% block javascripts %}
             {{ encore_entry_script_tags('backoffice') }}
         {% endblock %}
-    </head>
-    <body>
-        {% block body %}{% endblock %}
     </body>
 </html>

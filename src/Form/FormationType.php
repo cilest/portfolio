@@ -45,11 +45,13 @@ class FormationType extends AbstractType
                 'label' => '*Commencée le:',
                 'input' => 'datetime_immutable',
                 'required' => true,
+                'html5' => true,
             ])
             ->add('endedAt', DateType::class, [
                 'label' => 'Terminée le:',
                 'input' => 'datetime_immutable',
                 'required' => false,
+                'html5' => true,
             ])
             ->add('save', SubmitType::class, [
                 'label' => 'Sauvegarder',

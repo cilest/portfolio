@@ -81,14 +81,29 @@ class FormationController extends AbstractController
     }
 
     /**
-     * @Route("/delete/{id}", name="_delete", methods={"DELETE"})
+     * @Route("/delete/{id}", name="_delete", methods={"GET"})
+     * @param Formation $formation
+     * @return Response
+     */
+    public function delete(Formation $formation): Response
+    {
+        return $this->render('backoffice/formation/_form_delete.html.twig', [
+            'formation' => $formation
+        ]);
+    }
+
+    /**
+     * @Route("/delete/{id}", name="_confirmed_delete", methods={"POST","DELETE"})
      * @param Request $request
      * @param Formation $formation
      * @return Response
      */
-    public function delete(Request $request, Formation $formation): Response
+    public function confirmedDelete(Request $request, Formation $formation): Response
     {
-        if ($this->isCsrfTokenValid('delete.'.$formation->getId(), $request->request->get('_token'))) {
+        $submittedToken = $request->request->get('token');
+        $id = 'delete.'.$formation->getId();
+
+        if ($this->isCsrfTokenValid($id, $submittedToken)) {
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->remove($formation);
             $entityManager->flush();

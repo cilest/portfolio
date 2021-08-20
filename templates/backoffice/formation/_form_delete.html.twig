@@ -1,0 +1,5 @@
+<form action="{{ url('backoffice_formations_confirmed_delete', { id: formation.id }) }}" method="post">
+    <input type="hidden" name="token" value="{{ csrf_token('delete.' ~ formation.id) }}"/>
+
+    <button type="submit">Supprimer la formation</button>
+</form>

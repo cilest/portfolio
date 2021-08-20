@@ -3,5 +3,50 @@
 {% block title %}Formations: manage{% endblock %}
 
 {% block body %}
+    <div class="container-xl">
+        <div class="card">
+            <div class="card-header">
+                <div class="d-flex justify-content-between flex-wrap">
+                    <h5>Formations</h5>
+                    <div class="d-flex align-items-center">
+                        <a href="{{ path("backoffice_formations_create") }}" class="btn btn-sm btn-primary">Créer</a>
+                    </div>
+                </div>
+            </div>
 
+            <div class="card-body p-0">
+                <table class="mb-0  table table-responsive table-borderless">
+                    <thead class="bg-light">
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Titre</th>
+                        <th scope="col">Commenc&eacute;e le</th>
+                        <th scope="col">Termin&eacute;e le</th>
+                        <th scope="col"></th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for formation in formations %}
+                        <tr class="border-bottom border-200">
+                            <th  scope="row">
+                                <a class="text-decoration-none" href="{{ path("backoffice_formations_update", {"id": formation.id}) }}">{{ formation.id }}</a>
+                            </th>
+                            <td> {{ formation.title }}</td>
+                            <td> {{ formation.startedAt.format('d/m/Y') }}</td>
+                            <td> {{ formation.endedAt ? formation.endedAt.format('d/m/Y') : formation.endedAt }}</td>
+                            <td class="text-end">
+                                <a class="btn btn-sm btn-success" href="{{ path("backoffice_formations_update", {"id": formation.id}) }}">&Eacute;diter</a>
+                                <a class="btn btn-sm btn-danger" href="{{ path("backoffice_formations_delete", {"id": formation.id}) }}">Supprimer</a>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="card-footer">
+                <p class="m-0">{{ formations|length }} r&eacute;sultats</p>
+            </div>
+        </div>
+    </div>
 {% endblock %}
